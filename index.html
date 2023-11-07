@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Fsh radio</title>
+    <!-- Boiler plate------ -->
+    <link rel="icon" href="https://fsh.plus/fsh.png" type="image/png">
+    <meta name="description" content="Fsh main page">
+    <!-- ------- -->
+    <link rel="stylesheet" href="https://fsh.plus/NewStyle.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://fsh.plus/fsh.png"/>
+    <meta name="theme-color" content="#a89c9b">
+    <!-- ------------------ -->
+    <style>
+      body {
+        text-align: center;
+      }
+      table {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+      }
+      .fff td {
+        width: 20%;
+      }
+      svg {
+        fill: #fff;
+        width: 60px;
+        height: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="https://fsh.plus">
+      <table class="title">
+        <tr>
+          <td><img src="https://fsh.plus/fsh.gif" width="100" alt="Spining low quality fish"></td>
+          <td><h1>Fsh</h1></td>
+        </tr>
+      </table>
+    </a>
+    <h2 style="margin-top:-20px">Radio</h2>
+    <br>
+    <script>
+    function c() {
+      let volume = document.getElementById('ran').value;
+      
+      document.getElementById('vol').innerHTML = volume
+      
+      document.getElementById("audioPlayer").volume = Number(volume)/100
+    }
+    function change() {
+      var audio = document.getElementById("audioPlayer");
+      var button = document.getElementById("MB");
+
+      if (audio.paused) {
+        audio.setAttribute("src", "https://stream.zeno.fm/f7qzuwipf1gvv");
+        audio.load();
+        audio.play()
+        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>';
+      } else {
+        audio.setAttribute("src", "");
+        audio.pause()
+        setTimeout(function () { 
+          audio.load();
+        });
+        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>';
+      }
+    }
+    </script>
+    <h3>Player <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:20px;height:20px;margin-bottom:-5px;"><path d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"/></svg></h3>
+    <table class="Tout ">
+      <tr>
+        <td><button onclick="change()" id="MB"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></button></td>
+        <td>
+          <p>Volume <label id="vol">100</label></p>
+          <input type="range" max="100" min="0" value="100" onchange="c()" oninput="c()" id="ran">
+        </td>
+      </tr>
+    </table>
+    <br><br>
+    <a href="https://zeno.fm/radio/fsh-fm/"><button>Listen on zen</button></a>
+    <audio controls id="audioPlayer" style="display:none" src="https://stream.zeno.fm/f7qzuwipf1gvv"></audio>
+  </body>
+</html>
