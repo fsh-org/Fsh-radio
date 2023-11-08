@@ -80,6 +80,15 @@
         </td>
       </tr>
     </table>
+    <p>Now playing: <label id="NP">Loading...</label></p>
+    <script>
+      const evtSource = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/f7qzuwipf1gvv", {
+        withCredentials: true,
+      });
+      evtSource.onmessage = (event) => {
+        document.getElementById('NP').innerHTML = event.data.streamTitle
+      };
+    </script>
     <br><br>
     <a href="https://zeno.fm/radio/fsh-fm/"><button>Listen on zen</button></a>
     <audio controls id="audioPlayer" style="display:none" src="https://stream.zeno.fm/f7qzuwipf1gvv"></audio>
