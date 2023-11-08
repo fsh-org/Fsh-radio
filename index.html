@@ -86,7 +86,7 @@
         withCredentials: true,
       });
       evtSource.onmessage = (event) => {
-        document.getElementById('NP').innerHTML = event.data.streamTitle
+        document.getElementById('NP').innerHTML = JSON.parse(event.data).streamTitle
       };
     </script>
     <br><br>
