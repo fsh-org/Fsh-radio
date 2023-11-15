@@ -36,7 +36,7 @@
     <a href="https://fsh.plus">
       <table class="title">
         <tr>
-          <td><img src="https://fsh.plus/fsh.gif" width="100" alt="Spining low quality fish"></td>
+          <td><video src="https://fsh.plus/fsh.webm" playsinline autoplay muted loop width="100" alt="Spining low quality fish"></video></td>
           <td><h1>Fsh</h1></td>
         </tr>
       </table>
@@ -82,12 +82,16 @@
     </table>
     <p>Now playing: <label id="NP">Loading...</label></p>
     <script>
-      const evtSource = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/f7qzuwipf1gvv", {
-        withCredentials: true,
-      });
-      evtSource.onmessage = (event) => {
-        document.getElementById('NP').innerHTML = JSON.parse(event.data).streamTitle
-      };
+      try {
+        const evtSource = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/f7qzuwipf1gvv", {
+          withCredentials: true,
+        });
+        evtSource.onmessage = (event) => {
+          document.getElementById('NP').innerHTML = JSON.parse(event.data).streamTitle
+        };
+      } catch (err) {
+        document.getElementById('NP').innerHTML = "Error"
+      }
     </script>
     <br><br>
     <a href="https://zeno.fm/radio/fsh-fm/"><button>Listen on zen</button></a>
