@@ -83,9 +83,7 @@
     <p>Now playing: <label id="NP">Loading...</label></p>
     <script>
       try {
-        const evtSource = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/f7qzuwipf1gvv", {
-          withCredentials: true,
-        });
+        const evtSource = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/f7qzuwipf1gvv");
         evtSource.onmessage = (event) => {
           document.getElementById('NP').innerHTML = JSON.parse(event.data).streamTitle
         };
