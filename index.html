@@ -85,10 +85,12 @@
       try {
         const evtSource = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/f7qzuwipf1gvv");
         evtSource.onmessage = (event) => {
-          document.getElementById('NP').innerHTML = JSON.parse(event.data).streamTitle
+          let title = JSON.parse(event.data).streamTitle
+          document.getElementById('NP').innerHTML = title;
+          document.title = `${title} | Fsh radio`;
         };
       } catch (err) {
-        document.getElementById('NP').innerHTML = "Error"
+        document.getElementById('NP').innerHTML = "Error";
       }
     </script>
     <br><br>
