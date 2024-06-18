@@ -30,13 +30,13 @@
     {
       "type": "image/png",
       "sizes": "1920x1010",
-      "form_factor": "seawide",
+      "form_factor": "wide",
       "label": "Main page in desktop",
       "src": "https://radio.fsh.plus/ss/desktop.png"
     },
     {
       "type": "image/png",
-      "sizes": "395x895",
+      "sizes": "395x859",
       "form_factor": "narrow",
       "label": "Main page in mobile",
       "src": "https://radio.fsh.plus/ss/mobile.png"
