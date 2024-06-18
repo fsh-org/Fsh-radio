@@ -4,6 +4,7 @@
   "scope": "/",
   "start_url": "/",
   "display": "standalone",
+  "display_override": ["minimal-ui"],
   "theme_color": "#333333",
   "background_color": "#181818",
   "description": "Fsh radio - Listen to songs live with people around the world",
@@ -23,6 +24,22 @@
       "sizes": "256x256",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "screenshots" : [
+    {
+      "type": "image/png",
+      "sizes": "1920x1010",
+      "form_factor": "seawide",
+      "label": "Main page in desktop",
+      "src": "https://radio.fsh.plus/ss/desktop.png"
+    },
+    {
+      "type": "image/png",
+      "sizes": "395x895",
+      "form_factor": "narrow",
+      "label": "Main page in mobile",
+      "src": "https://radio.fsh.plus/ss/mobile.png"
     }
   ]
 }
