@@ -4,9 +4,9 @@
     <title>Fsh radio</title>
     <!-- Boiler plate------ -->
     <link rel="icon" href="https://fsh.plus/fsh.png" type="image/png">
-    <meta name="description" content="Fsh radio main page\nListen to songs with people all around the world">
+    <meta name="description" content="Fsh radio, listen to songs with people all around the world.">
     <!-- ------- -->
-    <link rel="stylesheet" href="https://fsh.plus/NewStyle.css">
+    <link rel="stylesheet" href="https://fsh.plus/media/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
       table.Tout, .Tout th, .Tout td {
         padding: 10px;
         border-collapse: collapse;
-        border: 2px var(--text) solid;
+        border: 2px var(--text-1) solid;
       }
     </style>
   </head>
@@ -48,10 +48,8 @@
     <script>
     function c() {
       let volume = document.getElementById('ran').value;
-      
-      document.getElementById('vol').innerHTML = volume
-      
-      document.getElementById("audioPlayer").volume = Number(volume)/100
+      document.getElementById('vol').innerHTML = volume;
+      document.getElementById("audioPlayer").volume = Number(volume)/100;
     }
     function change() {
       var audio = document.getElementById("audioPlayer");
@@ -60,17 +58,17 @@
       if (audio.paused) {
         audio.load();
         audio.play();
-        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>';
+        button.innerHTML = '<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><!--Fsh icons--><rect x="43" y="28" width="50" height="200" rx="10"/><rect x="163" y="28" width="50" height="200" rx="10"/></svg>';
       } else {
         audio.pause();
-        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>';
+        button.innerHTML = '<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><!--Fsh icons--><path d="M42 25.5255C42 20.8774 47.0573 17.9945 51.057 20.3627L223.281 122.337C227.205 124.661 227.205 130.339 223.281 132.663L51.057 234.637C47.0573 237.006 42 234.123 42 229.474V25.5255Z"/></svg>';
       }
     }
     </script>
-    <h3>Player <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:20px;height:20px;margin-bottom:-5px;"><path d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"/></svg></h3>
+    <h3>Player <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" style="width:20px;height:20px;margin-bottom:-3px;"><!--Fsh icons--><path d="M51 58.3067C51 56.0397 52.5252 54.0564 54.7162 53.4744L249.716 1.6694C252.889 0.826395 256 3.21856 256 6.50178V172.46H227.904V64.8805C227.904 61.628 224.847 59.2413 221.692 60.0295L84.7883 94.2271C82.562 94.7832 81 96.7833 81 99.078V224H51.0001L51 58.3067Z"></path><ellipse cx="40.5" cy="224" rx="40.5" ry="32"></ellipse><ellipse cx="214.5" cy="172.5" rx="41.5" ry="31.5"></ellipse></svg></h3>
     <table class="Tout">
       <tr>
-        <td><button aria-label="Play/Pause radio" onclick="change()" id="MB"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></button></td>
+        <td><button aria-label="Play/Pause radio" onclick="change()" id="MB"><svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><!--Fsh icons--><path d="M42 25.5255C42 20.8774 47.0573 17.9945 51.057 20.3627L223.281 122.337C227.205 124.661 227.205 130.339 223.281 132.663L51.057 234.637C47.0573 237.006 42 234.123 42 229.474V25.5255Z"/></svg></button></td>
         <td>
           <p>Volume <label id="vol">100</label></p>
           <input aria-label="Radio volume" type="range" max="100" min="0" value="100" onchange="c()" oninput="c()" id="ran">
