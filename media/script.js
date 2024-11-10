@@ -37,6 +37,17 @@ try {
       .then(res => res.json())
       .then(res => {
         res = res.data[0];
+        if (!res) {
+          document.getElementById('track-cover').src = 'https://fsh.plus/fsh.png';
+          if ('mediaSession' in navigator) {
+            navigator.mediaSession.metadata = new MediaMetadata({
+              title: title.split(' - ')[0],
+              artist: title.split(' - ')[1],
+              artwork: []
+            });
+          }
+          return;
+        }
         document.getElementById('track-title').innerText = res.title;
         document.title = `${res.title_short} | Fsh radio`;
         document.getElementById('track-author').innerText = 'By: '+res.artist.name;
