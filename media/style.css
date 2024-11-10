@@ -18,7 +18,10 @@ body {
   border-radius: 1rem;
   background-color: var(--bg-2);
 }
-#font-author {
+#track-cover {
+  border-radius: 0.5rem;
+}
+#track-author {
   font-size: 80%;
 }
 .player > span {

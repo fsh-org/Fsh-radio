@@ -29,14 +29,14 @@
   "screenshots" : [
     {
       "type": "image/png",
-      "sizes": "1920x1010",
+      "sizes": "1920x953",
       "form_factor": "wide",
       "label": "Main page in desktop",
       "src": "https://radio.fsh.plus/media/ss/desktop.png"
     },
     {
       "type": "image/png",
-      "sizes": "395x859",
+      "sizes": "387x849",
       "form_factor": "narrow",
       "label": "Main page in mobile",
       "src": "https://radio.fsh.plus/media/ss/mobile.png"
