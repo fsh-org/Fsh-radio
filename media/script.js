@@ -35,9 +35,8 @@ try {
 
     fetch(`https://api.fsh.plus/file?url=https://api.deezer.com/search?q=${encodeURIComponent(title)}&output=json`)
       .then(res => res.json())
-      .then(res => {
-        res = res.data[0];
-        if (!res) {
+      .then(re => {
+        if (!re.data[0]) {
           document.getElementById('track-cover').src = 'https://fsh.plus/fsh.png';
           if ('mediaSession' in navigator) {
             navigator.mediaSession.metadata = new MediaMetadata({
@@ -48,6 +47,8 @@ try {
           }
           return;
         }
+        res = re.data.filter(e=>e.title.includes(title.split(' ')[0]))[0];
+        if (!res) res = re.data[0];
         document.getElementById('track-title').innerText = res.title;
         document.title = `${res.title_short} | Fsh radio`;
         document.getElementById('track-author').innerText = 'By: '+res.artist.name;
