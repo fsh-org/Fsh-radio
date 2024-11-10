@@ -13,26 +13,8 @@
     <meta property="og:image" content="https://fsh.plus/fsh.png"/>
     <meta name="theme-color" content="#a89c9b">
     <!-- ------------------ -->
+    <link rel="stylesheet" href="/media/style.css">
     <link rel="manifest" href="/manifest.json">
-    <style>
-      body {
-        text-align: center;
-      }
-      table {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: left;
-      }
-      svg {
-        width: 60px;
-        height: 60px;
-      }
-      table.Tout, .Tout th, .Tout td {
-        padding: 10px;
-        border-collapse: collapse;
-        border: 2px var(--text-1) solid;
-      }
-    </style>
   </head>
   <body>
     <a href="https://fsh.plus">
@@ -45,53 +27,27 @@
     </a>
     <h2 style="margin-top:-20px">Radio</h2>
     <br>
-    <script>
-    function c() {
-      let volume = document.getElementById('ran').value;
-      document.getElementById('vol').innerHTML = volume;
-      document.getElementById("audioPlayer").volume = Number(volume)/100;
-    }
-    function change() {
-      var audio = document.getElementById("audioPlayer");
-      var button = document.getElementById("MB");
-
-      if (audio.paused) {
-        audio.load();
-        audio.play();
-        button.innerHTML = '<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><!--Fsh icons--><rect x="43" y="28" width="50" height="200" rx="10"/><rect x="163" y="28" width="50" height="200" rx="10"/></svg>';
-      } else {
-        audio.pause();
-        button.innerHTML = '<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><!--Fsh icons--><path d="M42 25.5255C42 20.8774 47.0573 17.9945 51.057 20.3627L223.281 122.337C227.205 124.661 227.205 130.339 223.281 132.663L51.057 234.637C47.0573 237.006 42 234.123 42 229.474V25.5255Z"/></svg>';
-      }
-    }
-    </script>
-    <h3>Player <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" style="width:20px;height:20px;margin-bottom:-3px;"><!--Fsh icons--><path d="M51 58.3067C51 56.0397 52.5252 54.0564 54.7162 53.4744L249.716 1.6694C252.889 0.826395 256 3.21856 256 6.50178V172.46H227.904V64.8805C227.904 61.628 224.847 59.2413 221.692 60.0295L84.7883 94.2271C82.562 94.7832 81 96.7833 81 99.078V224H51.0001L51 58.3067Z"></path><ellipse cx="40.5" cy="224" rx="40.5" ry="32"></ellipse><ellipse cx="214.5" cy="172.5" rx="41.5" ry="31.5"></ellipse></svg></h3>
-    <table class="Tout">
-      <tr>
-        <td><button aria-label="Play/Pause radio" onclick="change()" id="MB"><svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><!--Fsh icons--><path d="M42 25.5255C42 20.8774 47.0573 17.9945 51.057 20.3627L223.281 122.337C227.205 124.661 227.205 130.339 223.281 132.663L51.057 234.637C47.0573 237.006 42 234.123 42 229.474V25.5255Z"/></svg></button></td>
-        <td>
-          <p>Volume <label id="vol">100</label></p>
-          <input aria-label="Radio volume" type="range" max="100" min="0" value="100" onchange="c()" oninput="c()" id="ran">
-        </td>
-      </tr>
-    </table>
-    <p><b>Now playing:</b> <label id="NP">Loading...</label></p>
-    <script>
-      try {
-        const evtSource = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/f7qzuwipf1gvv");
-        evtSource.onmessage = (event) => {
-          let title = JSON.parse(event.data).streamTitle
-          document.getElementById('NP').innerHTML = title;
-          document.title = `${title} | Fsh radio`;
-        };
-      } catch (err) {
-        document.getElementById('NP').innerHTML = "Error";
-      }
-    </script>
+    <h2>Player <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256" style="margin-bottom:-3px"><path d="M51 58.3067C51 56.0397 52.5252 54.0564 54.7162 53.4744L249.716 1.6694C252.889 0.826395 256 3.21856 256 6.50178V172.46H227.904V64.8805C227.904 61.628 224.847 59.2413 221.692 60.0295L84.7883 94.2271C82.562 94.7832 81 96.7833 81 99.078V224H51.0001L51 58.3067Z"></path><ellipse cx="40.5" cy="224" rx="40.5" ry="32"></ellipse><ellipse cx="214.5" cy="172.5" rx="41.5" ry="31.5"></ellipse></svg></h2>
+    <div class="player">
+      <img id="track-cover" width="80" height="80" alt="Cover image of track" src="https://fsh.plus/fsh.png">
+      <span>
+        <span id="track-title">Loading...</span>
+        <span id="track-author">By: Loading...</span>
+        <span class="controls">
+          <button aria-label="Play/Pause radio" onclick="changePlayStatus()"><svg id="play-svg" width="16" height="16" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path d="M42 25.5255C42 20.8774 47.0573 17.9945 51.057 20.3627L223.281 122.337C227.205 124.661 227.205 130.339 223.281 132.663L51.057 234.637C47.0573 237.006 42 234.123 42 229.474V25.5255Z"/></svg></button>
+          <label id="volume-out" for="volume-in">100</label>
+          <input aria-label="Radio volume" type="range" max="100" min="0" value="100" onchange="volumeUpdate()" oninput="volumeUpdate()" id="volume-in">
+          <label id="volume-out" for="volume-in">100</label>
+        </span>
+      </span>
+    </div>
+    <audio id="audio-player" style="display:none" src="https://stream.zeno.fm/f7qzuwipf1gvv"></audio>
+    <script src="/media/script.js"></script>
     <br><br>
-    <a href="https://zeno.fm/radio/fsh-fm" target="_blank"><button>Zeno</button></a>
-    <a href="https://stream.zeno.fm/f7qzuwipf1gvv"><button>Direct stream</button></a>
-    <audio controls id="audioPlayer" style="display:none" src="https://stream.zeno.fm/f7qzuwipf1gvv"></audio>
-    <p style="position:fixed;bottom: 5px;">For suggestions / takedowns contact radio@fsh.plus</p>
+    <span>
+      <a href="https://zeno.fm/radio/fsh-fm" target="_blank"><button>Zeno</button></a>
+      <a href="https://stream.zeno.fm/f7qzuwipf1gvv"><button>Direct stream</button></a>
+    </span>
+    <p class="contact">For suggestions / takedowns contact radio@fsh.plus</p>
   </body>
 </html>
