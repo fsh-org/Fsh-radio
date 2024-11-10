@@ -33,7 +33,7 @@ try {
     document.getElementById('track-author').innerText = 'By: '+title.split(' - ')[1];
     document.title = `${title} | Fsh radio`;
 
-    fetch(`https://api.deezer.com/search?q=${encodeURIComponent(title)}&output=json`)
+    fetch(`https://api.fsh.plus/file?url=https://api.deezer.com/search?q=${encodeURIComponent(title)}&output=json`)
       .then(res => res.json())
       .then(res => {
         res = res.data[0];
