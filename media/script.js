@@ -39,8 +39,8 @@ try {
         res = res.data[0];
         document.getElementById('track-title').innerText = res.title;
         document.title = `${res.title_short} | Fsh radio`;
-        document.getElementById('track-author').innerText = res.artist.name;
-        document.getElementById('track-cover').innerText = res.album.cover ?? 'https://fsh.plus/fsh.png';
+        document.getElementById('track-author').innerText = 'By: '+res.artist.name;
+        document.getElementById('track-cover').src = res.album.cover ?? 'https://fsh.plus/fsh.png';
 
         if ('mediaSession' in navigator) {
           navigator.mediaSession.metadata = new MediaMetadata({
