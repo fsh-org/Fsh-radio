@@ -29,8 +29,8 @@ try {
   const evtSource = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/f7qzuwipf1gvv");
   evtSource.onmessage = (event) => {
     let title = JSON.parse(event.data).streamTitle;
-    document.getElementById('track-title').innerText = title.split(' - ')[0];
-    document.getElementById('track-author').innerText = 'By: '+title.split(' - ')[1];
+    document.getElementById('track-title').innerText = title.split(' - ')[1];
+    document.getElementById('track-author').innerText = 'By: '+title.split(' - ')[0];
     document.title = `${title} | Fsh radio`;
 
     fetch(`https://api.fsh.plus/file?url=https://api.deezer.com/search?q=${encodeURIComponent(title)}&output=json`)
@@ -40,14 +40,14 @@ try {
           document.getElementById('track-cover').src = 'https://fsh.plus/fsh.png';
           if ('mediaSession' in navigator) {
             navigator.mediaSession.metadata = new MediaMetadata({
-              title: title.split(' - ')[0],
-              artist: title.split(' - ')[1],
+              title: title.split(' - ')[1],
+              artist: title.split(' - ')[0],
               artwork: []
             });
           }
           return;
         }
-        res = re.data.filter(e=>e.title.includes(title.split(' ')[0]))[0];
+        res = re.data.filter(e=>e.title.includes(title.split(' - ')[1].split(' ')[0]))[0];
         if (!res) res = re.data[0];
         document.getElementById('track-title').innerText = res.title;
         document.title = `${res.title_short} | Fsh radio`;
