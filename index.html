@@ -28,14 +28,14 @@
     </a>
     <h2 style="margin-top:-20px">Radio</h2>
     <br>
-    <h2>Player <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256" style="margin-bottom:-3px"><path d="M51 58.3067C51 56.0397 52.5252 54.0564 54.7162 53.4744L249.716 1.6694C252.889 0.826395 256 3.21856 256 6.50178V172.46H227.904V64.8805C227.904 61.628 224.847 59.2413 221.692 60.0295L84.7883 94.2271C82.562 94.7832 81 96.7833 81 99.078V224H51.0001L51 58.3067Z"></path><ellipse cx="40.5" cy="224" rx="40.5" ry="32"></ellipse><ellipse cx="214.5" cy="172.5" rx="41.5" ry="31.5"></ellipse></svg></h2>
+    <h2>Player <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256" style="margin-bottom:-3px"><path d="M60 51.4762C60 49.1688 61.579 47.161 63.8213 46.6171L249.821 1.49877C252.968 0.735362 256 3.11945 256 6.35787V186H226V61.601C226 58.3949 223.025 56.0173 219.898 56.7239L93.898 85.194C91.6186 85.7091 90 87.7342 90 90.0711V221H60V51.4762Z"/><ellipse cx="45" cy="221" rx="45" ry="35"/><ellipse cx="211" cy="186" rx="45" ry="35"/></svg></h2>
     <div class="player">
       <img id="track-cover" width="80" height="80" alt="Cover image of track" src="https://fsh.plus/fsh.png">
       <span>
         <span id="track-title">Loading...</span>
         <span id="track-author">By: Loading...</span>
         <span class="controls">
-          <button aria-label="Play/Pause radio" onclick="changePlayStatus()"><svg id="play-svg" width="16" height="16" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path d="M42 25.5255C42 20.8774 47.0573 17.9945 51.057 20.3627L223.281 122.337C227.205 124.661 227.205 130.339 223.281 132.663L51.057 234.637C47.0573 237.006 42 234.123 42 229.474V25.5255Z"/></svg></button>
+          <button aria-label="Play/Pause radio" onclick="changePlayStatus()"><svg id="play-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256"><path d="M29 26.263C29 14.6537 41.6216 7.44498 51.6209 13.3432L224.097 115.08C233.936 120.884 233.936 135.116 224.097 140.92L51.6209 242.657C41.6216 248.555 29 241.346 29 229.737V26.263Z"/></svg></button>
           <input aria-label="Radio volume" type="range" max="100" min="0" value="100" onchange="volumeUpdate()" oninput="volumeUpdate()" id="volume-in">
           <label id="volume-out" for="volume-in">100</label>
         </span>

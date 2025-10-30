@@ -1,4 +1,4 @@
-let audioPlayer = document.getElementById("audio-player");
+let audioPlayer = document.getElementById('audio-player');
 
 function changePlayStatus() {
   let paused = audioPlayer.paused;
@@ -8,7 +8,7 @@ function changePlayStatus() {
   } else {
     audioPlayer.pause();
   }
-  document.getElementById("play-svg").innerHTML = paused ? '<rect x="43" y="28" width="50" height="200" rx="10"/><rect x="163" y="28" width="50" height="200" rx="10"/>' : '<path d="M42 25.5255C42 20.8774 47.0573 17.9945 51.057 20.3627L223.281 122.337C227.205 124.661 227.205 130.339 223.281 132.663L51.057 234.637C47.0573 237.006 42 234.123 42 229.474V25.5255Z"/>';
+  document.getElementById('play-svg').innerHTML = paused ? '<rect x="19" width="64" height="256" rx="15"/><rect x="173" width="64" height="256" rx="15"/>' : '<path d="M29 26.263C29 14.6537 41.6216 7.44498 51.6209 13.3432L224.097 115.08C233.936 120.884 233.936 135.116 224.097 140.92L51.6209 242.657C41.6216 248.555 29 241.346 29 229.737V26.263Z"/>';
 }
 
 function volumeUpdate() {
@@ -26,7 +26,7 @@ function imageDef(url, size) {
 }
 
 try {
-  const evtSource = new EventSource("https://api.zeno.fm/mounts/metadata/subscribe/f7qzuwipf1gvv");
+  const evtSource = new EventSource('https://api.zeno.fm/mounts/metadata/subscribe/f7qzuwipf1gvv');
   evtSource.onmessage = (event) => {
     let title = JSON.parse(event.data).streamTitle;
     document.getElementById('track-title').innerText = title.split(' - ')[1];
