@@ -26,6 +26,11 @@ function volumeUpdate() {
 }
 
 let imageDef = (url, size)=>({ src: url??'https://fsh.plus/fsh.png', sizes: size, type: 'image/jpg' });
+let scoreResult = (obj, title, artist)=>{
+  let titleF = obj.title.toLowerCase();
+  let artistF = obj.artist.name.toLowerCase();
+  return (titleF===title?2:(titleF.includes(title)?1:0))+(artistF===artist?2:(artistF.includes(artist)?1:0));
+};
 
 if (mediasesSupported) {
   navigator.mediaSession.setActionHandler('play', changePlayStatus);
@@ -49,8 +54,7 @@ try {
           if (mediasesSupported) navigator.mediaSession.metadata = new MediaMetadata({ title, artist, artwork: [] });
           return;
         }
-        info = info.data.toSorted((a,b)=>(a.title.toLowerCase().includes(title.toLowerCase())+a.artist.name.toLowerCase().includes(artist.toLowerCase()))-
-          (b.title.toLowerCase().includes(title.toLowerCase())+b.artist.name.toLowerCase().includes(artist.toLowerCase())))[0];
+        info = info.data.toSorted((a,b)=>scoreResult(b, title.toLowerCase(), artist.toLowerCase())-scoreResult(a, title.toLowerCase(), artist.toLowerCase()))[0];
         trackTitle.innerText = info.title;
         trackAuthor.innerText = `By: ${info.artist.name}`;
         document.title = `${info.title_short} | Fsh Radio`;
