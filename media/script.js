@@ -39,7 +39,7 @@ try {
     let artist = data.split(' - ')[0];
     trackTitle.innerText = title;
     trackAuthor.innerText = `By: ${artist}`;
-    document.title = `${title} | Fsh radio`;
+    document.title = `${title} | Fsh Radio`;
 
     fetch(`https://api.fsh.plus/file?url=https://api.deezer.com/search?q=${encodeURIComponent(data)}&output=json`)
       .then(info=>info.json())
@@ -49,12 +49,11 @@ try {
           if (mediasesSupported) navigator.mediaSession.metadata = new MediaMetadata({ title, artist, artwork: [] });
           return;
         }
-        info.sort((a,b)=>(a.title.toLowerCase().includes(title.toLowerCase())+a.artist.name.toLowerCase().includes(artist.toLowerCase()))-
-          (b.title.toLowerCase().includes(title.toLowerCase())+b.artist.name.toLowerCase().includes(artist.toLowerCase())));
-        info = info.data[0];
+        info = info.data.toSorted((a,b)=>(a.title.toLowerCase().includes(title.toLowerCase())+a.artist.name.toLowerCase().includes(artist.toLowerCase()))-
+          (b.title.toLowerCase().includes(title.toLowerCase())+b.artist.name.toLowerCase().includes(artist.toLowerCase())))[0];
         trackTitle.innerText = info.title;
         trackAuthor.innerText = `By: ${info.artist.name}`;
-        document.title = `${info.title_short} | Fsh radio`;
+        document.title = `${info.title_short} | Fsh Radio`;
         trackCover.src = info.album.cover ?? 'https://fsh.plus/fsh.png';
 
         if (mediasesSupported) navigator.mediaSession.metadata = new MediaMetadata({
