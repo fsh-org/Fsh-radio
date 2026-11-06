@@ -3,38 +3,62 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  height: 100dvh;
-  width: 100vw;
   width: 100dvw;
+  height: 100dvh;
   overflow: hidden;
+}
+button {
+  background-color: var(--bg-1);
 }
 
 .player {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  align-items: center;
+  min-width: 25dvw;
   padding: 15px;
   border-radius: 1rem;
   background-color: var(--bg-2);
 }
-#track-cover {
-  border-radius: 0.5rem;
-}
-#track-author {
-  font-size: 80%;
-}
-.player > span {
-  display: flex;
-  flex-direction: column;
-}
-.controls {
+.player div {
   display: flex;
   gap: 5px;
   align-items: center;
 }
+.player div span {
+  display: flex;
+  flex-direction: column;
+}
+.player button {
+  padding: 2px;
+  border: none;
+  background: none;
+}
+.player input {
+  flex: 1;
+  min-width: 0px;
+  margin: 0px;
+}
+.player label {
+  width: 4ch;
+  font-family: ui-monospace, monospace;
+}
 
+#track-cover {
+  border-radius: 0.5rem;
+}
+#track-title {
+  font-size: 1.4em;
+}
 .contact {
-  position: fixed;
-  bottom: 5px;
+  text-shadow: 0px 0px 8px var(--bg-0);
+}
+
+canvas {
+  position: absolute;
+  inset: 0px;
+  top: unset;
+  width: 100dvw;
+  height: 25dvh;
+  z-index: -10;
 }
